@@ -9,3 +9,9 @@ To log the subject messages of commits
 ```
 $ git log --format=%s
 ```
+
+commit hash
+
+```
+$ git log --format=%s
+```
