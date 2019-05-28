@@ -1,20 +1,22 @@
 let spawn = require('child_process').spawn;
 
-let git = spawn('git',['log']);
+// start get log process
+let git = spawn('git', ['log','--format=%s']);
 
-console.log('this far at least');
-
+// process data
 git.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`);
+
+    let raw = data.toString();
+
+    console.log(raw);
 });
 
-
+// if process error
 git.stderr.on('data', (data) => {
-  console.log(`stderr: ${data}`);
+    console.log(data.toString());
 });
 
-/*
-ls.on('close', (code) => {
-  console.log(`child process exited with code ${code}`);
+// when process is done
+git.on('close', (code) => {
+    console.log('process done with code: ' + code);
 });
-*/
