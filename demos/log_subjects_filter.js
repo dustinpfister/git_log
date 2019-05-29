@@ -1,5 +1,5 @@
 let spawn = require('child_process').spawn,
-git = spawn('git', ['log', '--format=%s']),
+git = spawn('git', ['log', '--format=%s:c-%H']),
 buf = Buffer.alloc(0);
 git.stdout.on('data', (data) => {
     buf = Buffer.concat([buf, data])
@@ -20,7 +20,7 @@ git.on('close', (code) => {
 
     // log all subject names
     subjects.forEach((sub) => {
-        console.log(sub);
+        console.log(sub.split(':'));
     });
 
 });
