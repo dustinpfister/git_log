@@ -5,9 +5,7 @@ let git = spawn('git', ['log','--format=%s']);
 
 // process data
 git.stdout.on('data', (data) => {
-
     let raw = data.toString();
-
     console.log(raw);
 });
 
